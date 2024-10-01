@@ -1,0 +1,93 @@
+\section{Getting Started}
+
+\begin{frame}[fragile,allowframebreaks]{Subsections}
+    \begin{block}{Create PDF Bookmarks for Subsections}
+    Use the \texttt{automateframe} environment to automatically create subsections with pdf bookmarks.
+\begin{verbatim}
+\automateframe{"Subsection"}{
+    "Insert Text"
+}
+\end{verbatim}
+        The inputs are the subsection title and the main text. This macro also allows the continuation of information in the next slide by using \texttt{allowframebreaks}.
+    \end{block}
+
+    \begin{block}{Subsections and Blocks}
+        While using blocks, define your frame as shown below.
+\begin{verbatim}
+\begin{frame}[fragile,allowframebreaks]{Subsection Title}
+\subsection{Subsection Title}
+\begin{block}
+    Text
+\end{block}\end{frame}
+\end{verbatim}
+I am unable to automate the subsection bookmarks for a fragile frame. I will update the template if I find a solution.
+    \end{block}
+\end{frame}
+
+\automateframe{Table of Contents}{
+\begin{itemize}
+    \item To remove the Table of Contents before every section, comment the following code in \texttt{beamertheme\_statale.sty}.
+\end{itemize}
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{colorblock}[toctxt]{frmtxt}{Table of Contents}
+            $\backslash$AtBeginSection[]\{\\
+                $\backslash$begingroup\\
+                $\backslash$themecolor\{main\}\\
+               $\backslash$begin\{frame\}[allowframebreaks]\{Table of Contents\}\\
+                   $\backslash$tableofcontents[currentsection]\\
+                $\backslash$end\{frame\}\\
+               $\backslash$endgroup\}\\
+        \end{colorblock}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{itemize}
+            \item To hide subsections in Table of Contents,
+            \begin{block}{Subsections}
+                    $\backslash$setbeamertemplate\{subsection in toc\}\{\}
+            \end{block}
+            \item To change the style, change
+            \begin{block}{Style of Contents}
+                $\backslash$setbeamertemplate\{section in toc\}\\\{\$$\backslash$blacktriangleright\$~$\backslash$inserttocsection\}
+            \end{block}
+        \end{itemize}
+    \end{column}
+\end{columns}
+
+}
+
+\automateframe{Hyperlinks}{
+    \begin{itemize}
+        \item Beamer buttons are a unique way to represent clickable links. To create one,\\[6pt]
+        $\backslash$hyperref\{"Link"\}\{$\backslash$beamerbutton\{"Insert Text"\}\}  \beamerbutton{Test}\\[3pt]
+        \item To create a link to a particular point in the presentation,\\[3pt]
+        \begin{itemize}
+            \item Create a hypertarget \\[3pt]
+            $\backslash$hypertarget\{target\}\{\}\\[3pt]
+            \item To create a hyperlink, use the target\\[3pt]
+            $\backslash$hyperlink\{target\}\{Text\}
+        \end{itemize}
+         
+    \end{itemize}
+}
+
+\automateframe{Title Page}{
+    \begin{itemize}
+        \item To add multiple authors, 
+        \begin{itemize}
+            \item Define the following for each author\\[3pt]
+        $\backslash$newcommand\{$\backslash$secondauthor\}[2]\{$\backslash$def\@secondauthor\{\#1\}$\backslash$def\@secondauthorid\{\#2\}\}\\[3pt]
+            \item Modify the title page style to include\\[3pt]
+            $\backslash$ifdefempty\{\@secondauthor\}\{\}\{\%\\
+            \{$\backslash$usebeamerfont\{author\}$\backslash$usebeamercolor[fg]\{author\}\\$\backslash$textbf\{\@secondauthor\} $\backslash$ifdefempty\{\@secondauthorid\}\{\}\{(\@secondauthorid)\}\}\}\\[3pt]
+            \item In \texttt{Main.tex}, include the details of the second author as\\[3pt]
+            $\backslash$secondauthor\{"Name"\}\{"ID"\}\\[3pt]
+            Repeat the same for any additional authors.
+        \end{itemize}
+        \item To reposition the text, change the spacing in \texttt{beamertheme\_statale.sty} at line 155.\\[3pt]
+        $\backslash$hspace\{-12mm\}\\
+        $\backslash$vspace\{20mm\}\\[6pt]
+        \item To modify the picture style, modify the \texttt{sidepic} environment at line 254 in \texttt{beamertheme\_statale.sty}.\\[3pt]
+        \item To replace the picture, replace the path in line 20 of \texttt{Main.tex}.
+    \end{itemize}
+}

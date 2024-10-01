@@ -1,0 +1,29 @@
+\section{References}
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\setbeamercolor{bibliography entry author}{fg=maincolor}
+\setbeamercolor{bibliography item}{fg=maincolor}
+
+\begin{frame}[fragile,allowframebreaks,plain]{References}
+    
+    \begin{beamercolorbox}[leftskip = 0cm]{frametitle}
+        \usebeamerfont{frametitle}\insertframetitle\\[12pt]
+    \end{beamercolorbox}
+    If you wish to hide this section from Table of Contents, use \texttt{section*\{References\}}.
+    \begin{block}{References}
+        $\backslash$begin\{beamercolorbox\}[leftskip = $0$cm]\{frametitle\} \\
+            $\backslash$usebeamerfont\{frametitle\}$\backslash$insertframetitle $\backslash$$\backslash$[12pt] \\
+        $\backslash$end\{beamercolorbox\} \\
+        $\backslash$setbeamertemplate\{bibliography item\}\{$\backslash$insertbiblabel\}\\
+        $\backslash$setbeamercolor\{bibliography entry author\}\{fg=maincolor\}\\
+        $\backslash$setbeamercolor\{bibliography item\}\{fg=maincolor\}
+        $\backslash$begin\{frame\}[allowframebreaks,plain]\{References\}\\
+            $\backslash$begin\{thebibliography\}\{9\}\\
+                $\backslash$bibitem\{1\} \\
+            $\backslash$end\{thebibliography\}   \\
+        $\backslash$end\{frame\}
+    \end{block}
+
+    
+    
+\end{frame}
